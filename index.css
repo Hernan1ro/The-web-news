@@ -199,4 +199,32 @@ main .new {
   color: var(--secondary-gray);
   cursor: pointer;
 }
+
+.flickr-photos h3 {
+  font-size: var(--sm);
+  font-weight: bolder;
+  color: var(--primary-gray);
+  margin-bottom: 1.5rem;
+}
+.flickr-photos .photos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.photos-container img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.featured-video h3 {
+  font-size: var(--sm);
+  font-weight: bolder;
+  color: var(--primary-gray);
+  margin-bottom: 1.5rem;
+}
+.featured-video .video {
+  width: 100%;
+  margin-bottom: 1rem;
+}
 /*-----------Extra section finish----------*/
