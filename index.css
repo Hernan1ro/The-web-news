@@ -85,13 +85,15 @@ main {
   flex-direction: column;
 }
 
+/*-----------News section start----------*/
 .news-container {
   display: grid;
+  justify-content: center;
   grid-row-gap: 2rem;
 }
 
 main .new {
-  max-width: 30rem;
+  max-width: 60rem;
 }
 
 .new img {
@@ -127,3 +129,4 @@ main .new {
   font-size: var(--md);
   cursor: pointer;
 }
+/*-----------News section finish----------*/
