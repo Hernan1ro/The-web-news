@@ -22,6 +22,7 @@
   grid-area: logo;
 }
 .logo-container__logo h1 {
+  font-size: var(--xl);
   font-family: auto;
   color: var(--warn-black);
 }
@@ -75,3 +76,54 @@
 }
 
 /*-----------Header End----------*/
+
+/*-----------Main start----------*/
+
+main {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-container {
+  display: grid;
+  grid-row-gap: 2rem;
+}
+
+main .new {
+  max-width: 30rem;
+}
+
+.new img {
+  width: 100%;
+  height: 10rem;
+  object-fit: co;
+  aspect-ratio: 2;
+  object-fit: cover;
+}
+.new h2 {
+  font-family: auto;
+  margin-top: 1rem;
+  color: var(--warn-black);
+  margin-bottom: 1rem;
+  font-size: var(--x);
+}
+.new span {
+  color: var(--secondary-gray);
+}
+.new p {
+  font-size: var(--sm);
+  color: var(--secondary-gray);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.new button {
+  color: var(--white);
+  background-color: var(--primary-red);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: auto;
+  font-size: var(--md);
+  cursor: pointer;
+}
