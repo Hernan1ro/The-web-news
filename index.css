@@ -179,4 +179,24 @@ main .new {
   font-size: var(--sm);
   cursor: pointer;
 }
+.popular-posts {
+  display: grid;
+  grid-row-gap: 1rem;
+}
+.popular-posts h3 {
+  font-size: var(--sm);
+  font-weight: bolder;
+  color: var(--primary-gray);
+  margin-bottom: 0.5rem;
+}
+.popular-posts span {
+  border-bottom: solid 1px var(--light-gray);
+  padding-bottom: 0.4rem;
+}
+.popular-posts a {
+  text-decoration: none;
+  font-size: var(--sm);
+  color: var(--secondary-gray);
+  cursor: pointer;
+}
 /*-----------Extra section finish----------*/
