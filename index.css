@@ -130,3 +130,53 @@ main .new {
   cursor: pointer;
 }
 /*-----------News section finish----------*/
+/*-----------Extra section start----------*/
+.extra-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-row-gap: 2rem;
+}
+.advertisement-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.advertisement-container div {
+  border: 2px dashed #d2c9c9;
+  background-color: var(--light-gray);
+  font-size: var(--md);
+  text-align: center;
+  color: var(--secondary-gray);
+  font-weight: 400;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.advertisement-container span {
+  font-size: var(--x);
+  font-weight: 700;
+  color: var(--secondary-gray);
+}
+.search {
+  display: grid;
+  grid-gap: 1re;
+  grid-template-columns: 1fr 25%;
+  height: 3rem;
+  grid-gap: 0.5rem;
+  background-color: var(--light-gray);
+  height: 6rem;
+  padding: 1rem 2rem 1rem 2rem;
+}
+.search input {
+  border: none;
+  outline: var(--secondary-red);
+}
+.search button {
+  color: var(--white);
+  background-color: var(--primary-red);
+  border: none;
+  font-size: var(--sm);
+  cursor: pointer;
+}
+/*-----------Extra section finish----------*/
