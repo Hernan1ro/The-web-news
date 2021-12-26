@@ -228,3 +228,15 @@ main .new {
   margin-bottom: 1rem;
 }
 /*-----------Extra section finish----------*/
+/*-----------footer  finish----------*/
+footer {
+  padding: 1rem;
+  height: 5rem;
+  background-color: var(--primary-gray);
+  color: var(--light-gray);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*-----------footer  finish----------*/
