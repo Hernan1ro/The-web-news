@@ -6,10 +6,34 @@
 
 /*-----------Header Start----------*/
 .information-menu {
-  padding: 1rem;
+  padding: 1rem 0 1rem 0;
   display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
-
+.information-menu ul {
+  display: flex;
+  list-style: none;
+}
+.information-menu ul li {
+  border-right: 1px solid var(--primary-gray);
+  padding-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+.information-menu ul li:nth-last-child(1) {
+  border-right: none;
+}
+.information-menu a {
+  text-decoration: none;
+  color: var(--primary-red);
+  font-size: var(--sm);
+  font-weight: bold;
+}
+.post-menu span {
+  color: var(--primary-gray);
+  font-size: var(--sm);
+}
 .logo-container {
   display: grid;
   grid-template-areas:
