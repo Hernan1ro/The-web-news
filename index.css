@@ -30,7 +30,7 @@
   font-size: var(--sm);
   font-weight: bold;
 }
-.post-menu span {
+.information-menu span {
   color: var(--primary-gray);
   font-size: var(--sm);
 }
@@ -94,8 +94,20 @@
   .logo-contanier__icon {
     display: none;
   }
+  .logo-container {
+    grid-template-areas: "logo advertise";
+    height: 6rem;
+  }
   .information-menu {
     display: flex;
+  }
+  .category__list ul {
+    justify-content: start;
+    padding: 1.5rem 0.5rem 1.5rem 1.5rem;
+  }
+  .category__list ul li {
+    font-size: var(--sm);
+    margin-right: 3rem;
   }
 }
 
