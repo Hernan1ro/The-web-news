@@ -19,6 +19,7 @@
   font-size: var(--xl);
   color: var(--primary-red);
   margin: 0 auto;
+  cursor: pointer;
 }
 .information-menu ul {
   display: flex;
@@ -103,7 +104,7 @@
 @media (max-width: 767px) {
   .information-menu {
     padding: 3rem;
-    display: flex;
+    display: none;
     position: absolute;
     background-color: var(--white);
     flex-direction: column;
@@ -114,6 +115,9 @@
     justify-content: space-evenly;
     align-items: flex-start;
     z-index: 2;
+  }
+  .menu-active {
+    display: flex;
   }
   .information-menu .page-menu,
   .information-menu .post-menu {
