@@ -55,11 +55,10 @@ function getPosts() {
     });
 }
 
-function printNewsOnDOM(post, images) {
-  console.log(post, images);
-  return;
-  data.map((item, index) => {
-    if (index <= 100) {
+function printNewsOnDOM(posts, images) {
+  console.log(posts, images);
+  posts.map((item, index) => {
+    if (index <= 19) {
       const { userId, title, id, body } = item;
       const article = document.createElement("article");
       article.classList.add("new");
@@ -70,6 +69,7 @@ function printNewsOnDOM(post, images) {
       const span = document.createElement("span");
       const p = document.createElement("p");
       const button = document.createElement("button");
+      img.src = images[index].url;
       h2.innerText = title;
       span.innerText = "Posted on January 7, 2008 by admin";
       p.innerText = body;
