@@ -57,6 +57,7 @@
   font-size: var(--xl);
   font-family: auto;
   color: var(--warn-black);
+  z-index: 3;
 }
 .logo-container__logo span {
   color: var(--primary-red);
@@ -225,7 +226,7 @@ main .new {
   .news-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 30rem 30rem;
-    grid-gap: 6rem;
+    gap: 12rem 6rem;
     padding: 0 9rem 0 2rem;
   }
 }

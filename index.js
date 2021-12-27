@@ -5,7 +5,7 @@ const menu = document.querySelector(".information-menu");
 const newsContainer = document.querySelector(".news-container");
 //-----------LISTENERS-----------//
 window.onload = () => {
-  getPosts();
+  getData();
   console.log("Obteniendo datos...");
 };
 menuIcon.addEventListener("click", () => {
@@ -23,41 +23,33 @@ function handleMenu(boolean) {
     menu.classList.remove("menu-active");
   }
 }
-function getPosts() {
-  let posts;
+// ---------Fetch data and images from JSONPlaceholder----------//
+function getData() {
   const POSTS = "https://jsonplaceholder.typicode.com/posts";
   const PHOTOS = "https://jsonplaceholder.typicode.com/photos";
-  // Call the API
-  fetch(POSTS)
-    .then(function (response) {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return Promise.reject(response);
-      }
+  const USERS = "https://jsonplaceholder.typicode.com/users";
+  // const DATE = "https://api.lrs.org/random-date-generator?num_dates=200";
+
+  Promise.all([fetch(POSTS), fetch(PHOTOS), fetch(USERS)])
+    .then((responses) => {
+      return Promise.all(
+        responses.map(function (response) {
+          return response.json();
+        })
+      );
     })
-    .then(function (data) {
-      // Store the post data to a variable
-      posts = data;
-      // Fetch another API
-      return fetch(PHOTOS);
+    .then((data) => {
+      printNewsOnDOM(data);
     })
-    .then(function (response) {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return Promise.reject(response);
-      }
-    })
-    .then((images) => printNewsOnDOM(posts, images))
-    .catch(function (error) {
-      console.warn(error);
+    .catch((error) => {
+      console.error(error);
     });
 }
 
-function printNewsOnDOM(posts, images) {
-  console.log(posts, images);
-  posts.map((item, index) => {
+//-----------Print data on DOM--------------//
+function printNewsOnDOM(data) {
+  console.log(data);
+  data[0].map((item, index) => {
     if (index <= 19) {
       const { userId, title, id, body } = item;
       const article = document.createElement("article");
@@ -69,9 +61,9 @@ function printNewsOnDOM(posts, images) {
       const span = document.createElement("span");
       const p = document.createElement("p");
       const button = document.createElement("button");
-      img.src = images[index].url;
+      img.src = data[1][index].url;
       h2.innerText = title;
-      span.innerText = "Posted on January 7, 2008 by admin";
+      span.innerText = `Posted on January 7, 2008 by ${data[2][userId].name}`;
       p.innerText = body;
       button.innerText = "Continue reading";
       article.appendChild(img);
