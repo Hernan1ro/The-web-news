@@ -41,6 +41,7 @@
     "advertise advertise";
   grid-row-gap: 1rem;
   margin-top: 1rem;
+  align-items: center;
 }
 .logo-container__logo {
   grid-area: logo;
@@ -54,6 +55,9 @@
   color: var(--primary-red);
   font-weight: bold;
   margin-left: 0.6rem;
+}
+.icon-container {
+  margin: 0 auto;
 }
 .logo-contanier__icon {
   grid-area: menu;
@@ -91,7 +95,7 @@
   cursor: pointer;
 }
 @media (min-width: 768px) {
-  .logo-contanier__icon {
+  .icon-container {
     display: none;
   }
   .logo-container {
@@ -116,13 +120,18 @@
 /*-----------Main start----------*/
 
 main {
-  padding: 1rem;
   display: flex;
   flex-direction: column;
 }
-
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+  }
+}
 /*-----------News section start----------*/
 .news-container {
+  margin-top: 2rem;
   display: grid;
   justify-content: center;
   grid-row-gap: 2rem;
@@ -165,6 +174,14 @@ main .new {
   font-size: var(--md);
   cursor: pointer;
 }
+@media (min-width: 768px) {
+  .news-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30rem 30rem;
+    grid-gap: 6rem;
+    padding: 0 9rem 0 2rem;
+  }
+}
 /*-----------News section finish----------*/
 /*-----------Extra section start----------*/
 .extra-container {
@@ -176,6 +193,7 @@ main .new {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
+  margin: 1rem 1rem 0 1rem;
 }
 .advertisement-container div {
   border: 2px dashed #d2c9c9;
@@ -263,7 +281,22 @@ main .new {
   width: 100%;
   margin-bottom: 1rem;
 }
+@media (min-width: 768px) {
+  .extra-container {
+    margin-top: 0;
+    border-left: solid 10px var(--light-gray);
+  }
+  .flickr-photos .photos-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .flickr-photos,
+  .featured-video,
+  .popular-posts {
+    margin: 0 1rem;
+  }
+}
 /*-----------Extra section finish----------*/
+/*-----------Main finish----------*/
 /*-----------footer  finish----------*/
 footer {
   padding: 1rem;
