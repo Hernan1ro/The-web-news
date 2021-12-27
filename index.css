@@ -12,6 +12,14 @@
   align-items: center;
   margin-bottom: 2rem;
 }
+.close-icon {
+  align-self: end;
+}
+.close-icon__fas {
+  font-size: var(--xl);
+  color: var(--primary-red);
+  margin: 0 auto;
+}
 .information-menu ul {
   display: flex;
   list-style: none;
@@ -128,6 +136,9 @@
   .logo-container {
     grid-template-areas: "logo advertise";
     height: 6rem;
+  }
+  .close-icon {
+    display: none;
   }
   .information-menu {
     display: flex;
