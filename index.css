@@ -331,6 +331,7 @@ main .new {
   .extra-container {
     margin-top: 0;
     border-left: solid 10px var(--light-gray);
+    height: fit-content;
   }
   .flickr-photos .photos-container {
     grid-template-columns: 1fr 1fr 1fr;
