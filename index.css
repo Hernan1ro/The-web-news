@@ -173,6 +173,7 @@ main {
   main {
     display: grid;
     grid-template-columns: 1fr 30%;
+    margin-bottom: 2rem;
   }
 }
 /*-----------News section start----------*/
@@ -190,7 +191,7 @@ main .new {
 .new img {
   width: 100%;
   height: 10rem;
-  object-fit: co;
+  border: solid 4px var(--light-gray);
   aspect-ratio: 2;
   object-fit: cover;
 }
