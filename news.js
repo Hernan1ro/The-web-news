@@ -50,7 +50,7 @@ function getData() {
 //-----------Print data on DOM--------------//
 function printNewsOnDOM(data) {
   data[0].map((item, index) => {
-    if (index <= 19) {
+    if (index <= 0) {
       const { userId, title, id, body } = item;
       const article = document.createElement("article");
       article.classList.add("new");
@@ -66,9 +66,6 @@ function printNewsOnDOM(data) {
       span.innerText = `Posted on January 7, 2008 by ${data[2][userId].name}`;
       p.innerText = body;
       button.innerText = "Continue reading";
-      button.onclick = () => {
-        readMore(id, userId);
-      };
       article.appendChild(img);
       article.appendChild(h2);
       article.appendChild(span);
@@ -77,9 +74,4 @@ function printNewsOnDOM(data) {
       newsContainer.appendChild(article);
     }
   });
-}
-
-function readMore(id, userId) {
-  console.log("Leer más..." + id);
-  window.location.href = "/news.html";
 }

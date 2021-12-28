@@ -52,12 +52,12 @@
 }
 .logo-container__logo {
   grid-area: logo;
+  z-index: 3;
 }
 .logo-container__logo h1 {
   font-size: var(--xl);
   font-family: auto;
   color: var(--warn-black);
-  z-index: 3;
 }
 .logo-container__logo span {
   color: var(--primary-red);
