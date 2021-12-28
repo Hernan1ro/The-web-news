@@ -1,8 +1,9 @@
 @media (min-width: 768px) {
   .news-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr 1fr;
     padding: 0 2rem 0 2rem;
+    row-gap: 3rem;
   }
 }
 .new img {
@@ -16,7 +17,13 @@
 .new button {
   margin-right: 2rem;
 }
-
+.comments {
+  max-width: 60rem;
+}
+.comments h2 {
+  font-size: var(--lg);
+  text-align: center;
+}
 .comment {
   display: grid;
   padding: 1rem;
@@ -24,6 +31,7 @@
   max-width: 60rem;
   border-bottom: solid 1px var(--light-gray);
   align-items: center;
+  gap: 1rem;
 }
 .comments p {
   font-size: var(--sm);

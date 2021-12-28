@@ -35,6 +35,7 @@ function getPost() {
 function printPostOnDOM(data, user, image) {
   const { userId, title, id, body } = data[0];
   const article = document.createElement("article");
+
   article.classList.add("new");
   article.dataset.id = id;
   article.dataset.userId = userId;
@@ -54,6 +55,7 @@ function printPostOnDOM(data, user, image) {
     body +
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus fuga sunt sed numquam, est maxime dolor sequi nulla id optio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, perferendis voluptate inventore illo unde iste rerum ipsa explicabo delectus, pariatur eum magni aut. Aut nisi ipsum adipisci quas nesciunt porro. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, enim culpa! Dolore, numquam consectetur! Nam nostrum laboriosam sequi quasi ipsum eos aut, a consectetur quidem ad adipisci veritatis autem, rerum harum cupiditate aperiam corrupti repellat eius porro iste ea? Ullam accusantium culpa ratione labore. Ipsum quas asperiores corrupti sapiente quisquam! lorem50";
   deleteBtn.innerText = "Delete";
+  //adding delete function//
   deleteBtn.onclick = () => {
     deletePost(id);
   };
@@ -67,8 +69,45 @@ function printPostOnDOM(data, user, image) {
   article.appendChild(deleteBtn);
   article.appendChild(createBtn);
   newsContainer.appendChild(article);
+  //Getting the comments//
+
+  getComments(id);
+}
+// --------- Get post's comments ------------ //
+function getComments(id) {
+  const COMMENTS = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
+  fetch(COMMENTS)
+    .then((response) => response.json())
+    .then((response) => printComments(response));
 }
 
+// --------- Print comments on DOM ------------ //
+function printComments(data) {
+  const commentsContainer = document.createElement("div");
+  commentsContainer.classList.add("comments");
+  newsContainer.appendChild(commentsContainer);
+  const container = document.querySelector(".comments");
+
+  const commetsHeader = document.createElement("h2");
+  commetsHeader.textContent = "Comments";
+  container.appendChild(commetsHeader);
+
+  data.forEach((comment) => {
+    const { name, body } = comment;
+    console.log(name, body);
+    container.innerHTML += `
+            <div class="comment">
+              <div class="user-info">
+                <img src="/user-profile.png" alt="user-photo" />
+                <span>${name}</span>
+              </div>
+              <p>
+                ${body}
+              </p>
+            </div>
+    `;
+  });
+}
 // --------- Delete Post ------------ //
 
 function deletePost(id) {
