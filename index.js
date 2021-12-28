@@ -6,7 +6,6 @@ const newsContainer = document.querySelector(".news-container");
 //-----------LISTENERS-----------//
 document.addEventListener("DOMContentLoaded", () => {
   getData();
-  console.log("Obteniendo datos...");
 });
 menuIcon.addEventListener("click", () => {
   handleMenu(true);

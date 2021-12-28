@@ -94,7 +94,6 @@ function printComments(data) {
 
   data.forEach((comment) => {
     const { name, body } = comment;
-    console.log(name, body);
     container.innerHTML += `
             <div class="comment">
               <div class="user-info">
@@ -113,11 +112,27 @@ function printComments(data) {
 function deletePost(id) {
   console.log("Deleting post " + id);
   const URL = `https://jsonplaceholder.typicode.com/posts/${id}`;
-  const POSTS = `https://jsonplaceholder.typicode.com/posts`;
   fetch(URL, {
     method: "DELETE",
-  });
-  fetch(POSTS)
-    .then((response) => response.json())
-    .then((response) => console.log(response));
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        alert("This post has been deleted");
+        setLocalStorageDeletedPost(id);
+        window.location.href = "/index.html";
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+//Sending the deleted post to local storage//
+function setLocalStorageDeletedPost(id) {
+  let deletedPosts = JSON.parse(localStorage.getItem("deletedPosts"));
+  console.log(deletedPosts);
+  if (deletedPosts === null) {
+    localStorage.setItem("deletedPosts", JSON.stringify([id]));
+  } else {
+    const deletedPostsUpdate = [...deletedPosts, id];
+    localStorage.setItem("deletedPosts", JSON.stringify(deletedPostsUpdate));
+  }
 }
