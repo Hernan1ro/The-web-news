@@ -4,10 +4,9 @@ const closeMenuIcon = document.querySelector(".close-icon");
 const menu = document.querySelector(".information-menu");
 const newsContainer = document.querySelector(".news-container");
 //-----------LISTENERS-----------//
-window.onload = () => {
-  getData();
-  console.log("Obteniendo datos...");
-};
+document.addEventListener("DOMContentLoaded", () => {
+  getPost();
+});
 menuIcon.addEventListener("click", () => {
   handleMenu(true);
 });
@@ -23,55 +22,38 @@ function handleMenu(boolean) {
     menu.classList.remove("menu-active");
   }
 }
-// ---------Fetch data and images from JSONPlaceholder----------//
-function getData() {
-  //APIS
-  const POSTS = "https://jsonplaceholder.typicode.com/posts";
-  const PHOTOS = "https://jsonplaceholder.typicode.com/photos";
-  const USERS = "https://jsonplaceholder.typicode.com/users";
-  // const DATE = "https://api.lrs.org/random-date-generator?num_dates=200";
-
-  Promise.all([fetch(POSTS), fetch(PHOTOS), fetch(USERS)])
-    .then((responses) => {
-      return Promise.all(
-        responses.map(function (response) {
-          return response.json();
-        })
-      );
-    })
-    .then((data) => {
-      printNewsOnDOM(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+// ---------Fetch data from localStorage----------//
+function getPost() {
+  const postData = JSON.parse(localStorage.getItem("postData"));
+  const user = JSON.parse(localStorage.getItem("postUser"));
+  const image = JSON.parse(localStorage.getItem("imgUser"));
+  printPostOnDOM(postData, user, image);
 }
 
-//-----------Print data on DOM--------------//
-function printNewsOnDOM(data) {
-  data[0].map((item, index) => {
-    if (index <= 0) {
-      const { userId, title, id, body } = item;
-      const article = document.createElement("article");
-      article.classList.add("new");
-      article.dataset.id = id;
-      article.dataset.userId = userId;
-      const img = document.createElement("img");
-      const h2 = document.createElement("h2");
-      const span = document.createElement("span");
-      const p = document.createElement("p");
-      const button = document.createElement("button");
-      img.src = data[1][index].url;
-      h2.innerText = title;
-      span.innerText = `Posted on January 7, 2008 by ${data[2][userId].name}`;
-      p.innerText = body;
-      button.innerText = "Continue reading";
-      article.appendChild(img);
-      article.appendChild(h2);
-      article.appendChild(span);
-      article.appendChild(p);
-      article.appendChild(button);
-      newsContainer.appendChild(article);
-    }
-  });
+//-----------Print post on DOM--------------//
+function printPostOnDOM(data, user, image) {
+  const { userId, title, id, body } = data[0];
+  const article = document.createElement("article");
+  article.classList.add("new");
+  article.dataset.id = id;
+  article.dataset.userId = userId;
+
+  const img = document.createElement("img");
+  const h2 = document.createElement("h2");
+  const span = document.createElement("span");
+  const p = document.createElement("p");
+  const button = document.createElement("button");
+
+  img.src = image;
+  h2.innerText = title;
+  span.innerText = `Posted on January 7, 2008 by ${user}`;
+  p.innerText = body;
+  button.innerText = "Continue reading";
+
+  article.appendChild(img);
+  article.appendChild(h2);
+  article.appendChild(span);
+  article.appendChild(p);
+  article.appendChild(button);
+  newsContainer.appendChild(article);
 }

@@ -4,10 +4,10 @@ const closeMenuIcon = document.querySelector(".close-icon");
 const menu = document.querySelector(".information-menu");
 const newsContainer = document.querySelector(".news-container");
 //-----------LISTENERS-----------//
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
   getData();
   console.log("Obteniendo datos...");
-};
+});
 menuIcon.addEventListener("click", () => {
   handleMenu(true);
 });
@@ -69,8 +69,9 @@ function printNewsOnDOM(data) {
       span.innerText = `Posted on January 7, 2008 by ${data[2][userId].name}`;
       p.innerText = body;
       button.innerText = "Continue reading";
+      //Sending data to print the information
       button.onclick = () => {
-        getPostInformation(id, data[2][userId].name);
+        getPostInformation(id, data[2][userId].name, data[1][index].url);
       };
 
       article.appendChild(img);
@@ -83,10 +84,8 @@ function printNewsOnDOM(data) {
   });
 }
 
-function getPostInformation(id, user) {
-  // window.location.href = "/news.html";
+function getPostInformation(id, user, img) {
   console.log("Leer más..." + id);
-  console.log(user);
   const POST = `https://jsonplaceholder.typicode.com/posts/${id}`;
   const COMMENTS = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
 
@@ -99,7 +98,10 @@ function getPostInformation(id, user) {
       );
     })
     .then((data) => {
-      console.log(data);
+      localStorage.setItem("postData", JSON.stringify(data));
+      localStorage.setItem("postUser", JSON.stringify(user));
+      localStorage.setItem("imgUser", JSON.stringify(img));
+      window.location.href = "/news.html";
     })
     .catch((error) => {
       console.error(error);
