@@ -48,10 +48,14 @@ function getData() {
 
 //-----------Print data on DOM--------------//
 function printNewsOnDOM(data) {
-  data[0].map((item, index) => {
-    if (index <= 19) {
-      const { userId, title, id, body } = item;
+  const deletedPosts = JSON.parse(localStorage.getItem("deletedPosts")) || [];
 
+  data[0].map((item, index) => {
+    // Check if it already exist deleted posts and only showing the first 20 posts//
+    const isPostDeleted = deletedPosts.some((post) => post === item.id);
+    console.log(isPostDeleted);
+    if (index <= 19 && !isPostDeleted) {
+      const { userId, title, id, body } = item;
       const article = document.createElement("article");
       article.classList.add("new");
       article.dataset.id = id;
@@ -82,6 +86,8 @@ function printNewsOnDOM(data) {
     }
   });
 }
+
+//-----------Sending Post information to localStorage--------------//
 
 function getPostInformation(id, user, img) {
   const POST = `https://jsonplaceholder.typicode.com/posts/${id}`;
