@@ -52,23 +52,27 @@ function printNewsOnDOM(data) {
   data[0].map((item, index) => {
     if (index <= 19) {
       const { userId, title, id, body } = item;
+
       const article = document.createElement("article");
       article.classList.add("new");
       article.dataset.id = id;
       article.dataset.userId = userId;
+
       const img = document.createElement("img");
       const h2 = document.createElement("h2");
       const span = document.createElement("span");
       const p = document.createElement("p");
       const button = document.createElement("button");
+
       img.src = data[1][index].url;
       h2.innerText = title;
       span.innerText = `Posted on January 7, 2008 by ${data[2][userId].name}`;
       p.innerText = body;
       button.innerText = "Continue reading";
       button.onclick = () => {
-        readMore(id, userId);
+        getPostInformation(id, data[2][userId].name);
       };
+
       article.appendChild(img);
       article.appendChild(h2);
       article.appendChild(span);
@@ -79,7 +83,25 @@ function printNewsOnDOM(data) {
   });
 }
 
-function readMore(id, userId) {
+function getPostInformation(id, user) {
+  // window.location.href = "/news.html";
   console.log("Leer más..." + id);
-  window.location.href = "/news.html";
+  console.log(user);
+  const POST = `https://jsonplaceholder.typicode.com/posts/${id}`;
+  const COMMENTS = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
+
+  Promise.all([fetch(POST), fetch(COMMENTS)])
+    .then((responses) => {
+      return Promise.all(
+        responses.map(function (response) {
+          return response.json();
+        })
+      );
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
