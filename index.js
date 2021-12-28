@@ -85,7 +85,6 @@ function printNewsOnDOM(data) {
 }
 
 function getPostInformation(id, user, img) {
-  console.log("Leer más..." + id);
   const POST = `https://jsonplaceholder.typicode.com/posts/${id}`;
   const COMMENTS = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
 
