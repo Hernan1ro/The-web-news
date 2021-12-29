@@ -4,6 +4,8 @@ const closeMenuIcon = document.querySelector(".close-icon");
 const menu = document.querySelector(".information-menu");
 const newsContainer = document.querySelector(".news-container");
 const createPostContainer = document.querySelector(".create-post-container");
+const cancelBtn = document.querySelector(".cancel-create-post");
+const form = document.querySelector("#form");
 
 //-----------LISTENERS-----------//
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,6 +17,10 @@ menuIcon.addEventListener("click", () => {
 closeMenuIcon.addEventListener("click", () => {
   handleMenu(false);
 });
+cancelBtn.addEventListener("click", () => {
+  cancelCreatePost();
+});
+form.addEventListener("submit", checkData);
 
 //-----------FUNCTIONS-----------//
 
@@ -29,6 +35,7 @@ function handleMenu(boolean) {
 function getPost() {
   const postData = JSON.parse(localStorage.getItem("postData"));
   const user = JSON.parse(localStorage.getItem("postUser"));
+  console.log(user);
   const image = JSON.parse(localStorage.getItem("imgUser"));
   printPostOnDOM(postData, user, image);
 }
@@ -132,7 +139,6 @@ function deletePost(id) {
 //Sending the deleted post to local storage//
 function setLocalStorageDeletedPost(id) {
   let deletedPosts = JSON.parse(localStorage.getItem("deletedPosts"));
-  console.log(deletedPosts);
   if (deletedPosts === null) {
     localStorage.setItem("deletedPosts", JSON.stringify([id]));
   } else {
@@ -151,4 +157,50 @@ function createNewPost() {
   createPostContainer.classList.remove("hide");
   news.classList.add("hide");
   commets.classList.add("hide");
+}
+
+//-------------- Cancel create new Post ----------------- //
+
+function cancelCreatePost() {
+  const news = document.querySelector(".new");
+  const commets = document.querySelector(".comments");
+  newsContainer.classList.remove("creative-mode");
+
+  createPostContainer.classList.add("hide");
+  news.classList.remove("hide");
+  commets.classList.remove("hide");
+}
+//--------------Check data fields -------------//
+
+function checkData(e) {
+  e.preventDefault();
+  // obtener datos del formulario
+  const title = document.querySelector(".input-container input").value;
+  const content = document.querySelector(".input-container textarea").value;
+
+  if (content === "" || title === "") {
+    alert("Todos los campos son obligatorios");
+  }
+  const post = {
+    userId: Date.now(),
+    id: Date.now(),
+    title: title,
+    body: content,
+  };
+
+  setLocalStorageUserPost(post);
+}
+
+//---Send user post to local storage---//
+
+function setLocalStorageUserPost(post) {
+  let userPosts = JSON.parse(localStorage.getItem("userPosts"));
+  if (userPosts === null) {
+    localStorage.setItem("userPosts", JSON.stringify([post]));
+  } else {
+    const userPostsUpdate = [...userPosts, post];
+    localStorage.setItem("userPosts", JSON.stringify(userPostsUpdate));
+  }
+  alert("Tu publicación se ha guardado correctamente");
+  window.location.href = "/index.html";
 }

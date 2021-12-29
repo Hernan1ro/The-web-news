@@ -26,6 +26,8 @@
 .new button {
   margin-right: 2rem;
 }
+
+/*--------------------- COMMENTS---------------------- */
 .comments {
   max-width: 60rem;
 }
@@ -64,6 +66,7 @@
 .cancel-create-post {
   position: absolute;
   right: 0;
+  cursor: pointer;
 }
 .create-post-container form {
   display: grid;
