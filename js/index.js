@@ -67,7 +67,7 @@ function printNewsOnDOM(data) {
       const p = document.createElement("p");
       const button = document.createElement("button");
 
-      img.src = "";
+      img.src = "/assets/images/Neon ev.jpg";
       h2.innerText = title;
       span.innerText = `Posted on January 7, 2008 by user`;
       p.innerText = body;
@@ -151,7 +151,10 @@ function getPostInformation(id, user, img, post) {
     const postData = [post, []];
     localStorage.setItem("postData", JSON.stringify(postData));
     localStorage.setItem("postUser", JSON.stringify("user"));
-    localStorage.setItem("imgUser", JSON.stringify(""));
+    localStorage.setItem(
+      "imgUser",
+      JSON.stringify("/assets/images/Neon ev.jpg")
+    );
     window.location.href = "/news.html";
   }
 }
