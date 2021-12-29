@@ -50,6 +50,10 @@
   margin-top: 1rem;
   align-items: center;
 }
+.logo-container a {
+  cursor: pointer;
+  text-decoration: none;
+}
 .logo-container__logo {
   grid-area: logo;
   z-index: 3;
@@ -346,6 +350,7 @@ main .new {
 }
 /*-----------Extra section finish----------*/
 /*-----------Main finish----------*/
+
 /*-----------footer  start----------*/
 footer {
   padding: 1rem;

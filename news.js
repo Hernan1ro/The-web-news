@@ -3,6 +3,8 @@ const menuIcon = document.querySelector(".icon-container");
 const closeMenuIcon = document.querySelector(".close-icon");
 const menu = document.querySelector(".information-menu");
 const newsContainer = document.querySelector(".news-container");
+const createPostContainer = document.querySelector(".create-post-container");
+
 //-----------LISTENERS-----------//
 document.addEventListener("DOMContentLoaded", () => {
   getPost();
@@ -61,7 +63,9 @@ function printPostOnDOM(data, user, image) {
   };
   createBtn.innerText = "Create your own post";
   createBtn.style.backgroundColor = "#b14434";
-
+  createBtn.onclick = () => {
+    createNewPost();
+  };
   article.appendChild(img);
   article.appendChild(h2);
   article.appendChild(span);
@@ -135,4 +139,16 @@ function setLocalStorageDeletedPost(id) {
     const deletedPostsUpdate = [...deletedPosts, id];
     localStorage.setItem("deletedPosts", JSON.stringify(deletedPostsUpdate));
   }
+}
+
+//-------------- Create new Post ----------------- //
+
+function createNewPost() {
+  const news = document.querySelector(".new");
+  const commets = document.querySelector(".comments");
+  newsContainer.classList.add("creative-mode");
+
+  createPostContainer.classList.remove("hide");
+  news.classList.add("hide");
+  commets.classList.add("hide");
 }

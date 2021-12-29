@@ -29,7 +29,7 @@
             <i class="fas fa-times-circle close-icon__fas"></i>
           </div>
           <ul class="page-menu">
-            <li><a href="#">HOME</a></li>
+            <li><a href="/index.html">HOME</a></li>
             <li><a href="#">ABOUT US</a></li>
             <li><a href="#">DEMO PAGE</a></li>
             <li><a href="#">CONTACT PAGE</a></li>
@@ -42,10 +42,12 @@
           </ul>
         </nav>
         <div class="logo-container">
-          <div class="logo-container__logo">
-            <h1>THE WEB NEWS</h1>
-            <span>Free CSS Template</span>
-          </div>
+          <a href="/index.html">
+            <div class="logo-container__logo">
+              <h1>THE WEB NEWS</h1>
+              <span>Free CSS Template</span>
+            </div>
+          </a>
           <div class="icon-container">
             <i class="fas fa-bars logo-contanier__icon"></i>
           </div>
@@ -54,7 +56,37 @@
         <div class="category"></div>
       </header>
       <main>
-        <section class="news-container"></section>
+        <section class="news-container">
+          <div class="create-post-container hide">
+            <i
+              class="fas fa-times-circle close-icon__fas cancel-create-post"
+              aria-hidden="true"
+            ></i>
+            <form action="" method="post">
+              <div class="input-container">
+                <label for="title">Title</label>
+                <input
+                  type="text"
+                  placeholder="Your title"
+                  name="title"
+                  required
+                  value=""
+                />
+              </div>
+              <div class="input-container">
+                <label for="content">Content</label>
+                <textarea
+                  class="text-field"
+                  name="content"
+                  id=""
+                  cols="200"
+                  rows="10"
+                ></textarea>
+              </div>
+              <button type="submit">Publish</button>
+            </form>
+          </div>
+        </section>
         <aside class="extra-container">
           <div class="advertisement-container">
             <div>
