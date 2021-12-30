@@ -58,6 +58,7 @@ function printNewsOnDOM(data) {
       const { userId, title, id, body } = post;
       const article = document.createElement("article");
       article.classList.add("new");
+      article.classList.add("fadeInUp");
       article.dataset.id = id;
       article.dataset.userId = userId;
 
@@ -95,6 +96,7 @@ function printNewsOnDOM(data) {
       const { userId, title, id, body } = item;
       const article = document.createElement("article");
       article.classList.add("new");
+      article.classList.add("fadeInUp");
       article.dataset.id = id;
       article.dataset.userId = userId;
 
